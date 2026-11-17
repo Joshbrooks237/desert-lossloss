@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOSSLOSS</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110e0c' width='32' height='32'/%3E%3Ccircle cx='20' cy='18' r='5' fill='%23e25b2a'/%3E%3Cpath d='M4 24h24' stroke='%23c6a15a' stroke-width='1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <span class="lamp" aria-hidden="true"></span>
+        <div>
+          <p class="word">Lossloss</p>
+          <p class="tag">Desert hi-res</p>
+        </div>
+      </div>
+      <div class="tools">
+        <button class="text" id="open-files" type="button">Open</button>
+        <button class="text" id="open-folder" type="button">Folder</button>
+        <label class="device">
+          <span>Output</span>
+          <select id="device" aria-label="Output device"></select>
+          <span id="clock">Clock —</span>
+        </label>
+        <button class="toggle" id="match" type="button" aria-pressed="true" title="Set the output device to the file's sample rate. The previous clock is restored on quit.">
+          <span class="dot" aria-hidden="true"></span>
+          Match rate
+        </button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <section class="sleeve-col">
+        <div class="sleeve">
+          <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="48" class="ring-bg"></circle>
+            <circle id="ring" cx="50" cy="50" r="48" class="ring-fg"></circle>
+          </svg>
+          <div class="art" id="art">
+            <img id="cover" alt="" hidden>
+            <svg class="dune" id="dune" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="64" cy="56" r="13"></circle>
+              <path d="M8 74 H92"></path>
+              <path d="M6 82 Q28 74 50 82 T94 80"></path>
+            </svg>
+          </div>
+          <p class="stamp" id="stamp" hidden>Hi-res</p>
+        </div>
+        <div class="plaque" id="plaque" data-grade="quiet">
+          <p class="grade" id="grade">Quiet</p>
+          <div class="figures">
+            <p><b id="khz">—</b><span>kHz</span></p>
+            <p><b id="bits">—</b><span>bit</span></p>
+          </div>
+          <p class="codec" id="codec">No file</p>
+          <p class="delivery" id="delivery"></p>
+        </div>
+      </section>
+
+      <section class="now">
+        <p class="kicker" id="kicker">Nothing on the spindle</p>
+        <h1 id="title">Open a record.</h1>
+        <p class="artist" id="artist"></p>
+        <p class="album" id="album"></p>
+        <p class="drop-hint shell-only" id="drop-hint">Drop files or a folder on the window.</p>
+      </section>
+
+      <section class="rail">
+        <div class="rail-head">
+          <h2>Setlist</h2>
+          <button class="text" id="clear" type="button">Clear</button>
+        </div>
+        <p class="scan" id="scan" hidden></p>
+        <ol class="setlist" id="setlist"></ol>
+      </section>
+    </main>
+
+    <section class="dock">
+      <div class="times">
+        <span id="elapsed">0:00</span>
+        <span id="total">0:00</span>
+      </div>
+      <input id="seek" type="range" min="0" max="0" value="0" step="0.1" aria-label="Position" disabled>
+      <div class="transport">
+        <button class="skip" id="prev" type="button" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zm12 0v14L8 12z"></path></svg>
+        </button>
+        <button class="play" id="play" type="button" aria-label="Play"><span class="glyph"></span></button>
+        <button class="skip" id="next" type="button" aria-label="Next">
+          <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM6 5v14l10-7z"></path></svg>
+        </button>
+        <div class="eq-spot">
+          <button class="eq" id="eq" type="button" aria-expanded="false" aria-controls="eq-line">
+            <span class="eq-e">E</span><span class="eq-q">Q</span>
+            <svg class="eq-fault" viewBox="0 0 8 28" aria-hidden="true">
+              <path d="M5 0 L2 7 L6 13 L3 20 L5 28"></path>
+            </svg>
+          </button>
+          <p class="eq-line" id="eq-line" hidden>If you have to EQ you are not calibrated, not perfecth</p>
+        </div>
+        <label class="level">
+          <span>Level</span>
+          <input id="volume" type="range" min="0" max="100" value="100" step="1" aria-label="Level">
+          <span id="volume-read">100</span>
+        </label>
+      </div>
+      <p class="advice" id="advice"></p>
+      <p class="error" id="error" hidden></p>
+    </section>
+
+    <footer class="colophon">
+      <img class="fan-mark" src="/q.png" alt="">
+      <p>This player is for the saga of our lives. Not affiliated with Queens of the Stone Age. Space plays. Arrows seek. The device clock is restored on quit.</p>
+    </footer>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
